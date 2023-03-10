@@ -1,0 +1,32 @@
+
+sudo apt update
+sudo apt install python3-pip
+sudo apt install nginx
+
+cd /etc/nginx/sites-enabled/
+sudo nano fastapi_nginx 
+# add below content in this file 
+server {
+    listen 80;
+    server_name 18.116.199.161;
+    location / {
+        proxy_pass http://127.0.0.1:8000;
+    }
+}
+
+sudo service nginx restart
+
+python3 -m uvicorn main:app
+
+
+pip install rembg
+
+mkdir app 
+nano api.py (add text save and run )
+
+
+uvicorn api:app 
+
+
+WARNING: The script filetype is installed in '/home/ubuntu/.local/bin' which is not on PATH.
+  Consider adding this directory to PATH or, if you prefer to suppress this warning, use --no-warn-script-location.
